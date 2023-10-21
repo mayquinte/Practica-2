@@ -1,0 +1,9 @@
+informacion para trabajar con la base de datos para mas detalles ver : https://docs.theconduit.dev/tut/executing-queries/
+
+1. Todo cambio que se le haga a la BD tendras que reflejarlo en tables.dart para que se puedan ejecutar queries
+
+2.  ejecutar el archivo migration con el comando en la carpeta del proyecto : 
+>> conduit db generate
+>> conduit db upgrade --connect postgres://postgres:[password]@localhost:5432/DirectoryAPP 
+
+para ver los cambios a las clases

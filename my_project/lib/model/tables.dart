@@ -9,12 +9,12 @@ class Client extends ManagedObject<_Client>
 class _Client {
   //tabla de la BD _Client
   @primaryKey
-  late int? c_id;
+  late int? id;
 
   @Column()
-  late String? c_name;
+  late String? name;
 
-  @Column()
-  late String? c_email;
+  @Column(nullable: false)
+  late String email; 
 
 }
