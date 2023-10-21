@@ -1,38 +1,37 @@
 import 'package:my_project/my_project.dart';
+import 'package:conduit_postgresql/conduit_postgresql.dart';
+import '../controller/ClientController.dart';
 
-/// This type initializes an application.
-///
-/// Override methods in this class to set up routes and initialize services like
-/// database connections. See http://conduit.io/docs/http/channel/.
 class MyProjectChannel extends ApplicationChannel {
-  /// Initialize services in this method.
-  ///
-  /// Implement this method to initialize services, read values from [options]
-  /// and any other initialization required before constructing [entryPoint].
-  ///
-  /// This method is invoked prior to [entryPoint] being accessed.
+  late ManagedContext context;
+
   @override
   Future prepare() async {
     logger.onRecord.listen(
         (rec) => print("$rec ${rec.error ?? ""} ${rec.stackTrace ?? ""}"));
+
+      final dataModel = ManagedDataModel.fromCurrentMirrorSystem();
+      final persistentStore = PostgreSQLPersistentStore.fromConnectionInfo(
+        ///Crea un objeto "context" que contiene la conexion a la base de datos y el modelo de datos
+        //Datos para el ingreso al servidor de la base de datos
+        "postgres",
+        "Puchy5531",
+        "localhost",
+        5432,
+        "DirectoryAPP"); //definido en las "clases"
+
+    context = ManagedContext(dataModel, persistentStore);
   }
 
-  /// Construct the request channel.
-  ///
-  /// Return an instance of some [Controller] that will be the initial receiver
-  /// of all [Request]s.
-  ///
-  /// This method is invoked after [prepare].
-  @override
-  Controller get entryPoint {
-    final router = Router();
+  //colocar aqui las rutas junto con su controlador que maneja la logica de la ruta
+  @override 
+  Controller get entryPoint => Router()
 
-    // Prefer to use `link` instead of `linkFunction`.
-    // See: https://conduit.io/docs/http/request_controller/
-    router.route("/example").linkFunction((request) async {
-      return Response.ok({"key": "value"});
-    });
+    ..route("/status").linkFunction((request) async {
+      return Response.ok({"message": "pong"});
+    })
 
-    return router;
-  }
+    ..route("/directories").link(() => ClientController(context))
+
+    ..route("/directories/:c_id").link(() => ClientController(context));
 }

@@ -1,0 +1,5 @@
+username: "postgres"
+password: "Puchy5531"
+host: "localhost"
+port: 5432
+databaseName: "DirectoryAPP"
