@@ -26,4 +26,4 @@ RUN dart run conduit db generate
 CMD bash -c 'while !</dev/tcp/$DB_HOST/$DB_PORT; do sleep 1; done; dart run conduit db upgrade && dart run ./my_project/bin/main.dart'
 
 # Expose port 8000 to the outside world
-EXPOSE 8888
+EXPOSE 8000
