@@ -16,9 +16,9 @@ Future<Response> getAllUsuarios(
       ..fetchLimit = limit
       ..offset = offset;
     final client = await clientQuery.fetch();
-    bool client_empty = false;
+    bool clientEmpty = false;
     if (client.isEmpty){
-      client_empty = true;
+      clientEmpty = true;
       return Response.notFound(body: {"message": "Clients Not Found"});
     } 
     final count = client.length;
@@ -38,7 +38,7 @@ Future<Response> getAllUsuarios(
 
     final Map<String, dynamic> responseMap = {
       'count': count,
-      'next': client_empty == false ? '/directories?limit=$limit&offset=$nextOffset' : null,
+      'next': clientEmpty == false ? '/directories?limit=$limit&offset=$nextOffset' : null,
       'previous': prevOffset >= 0 ? '/directories?limit=$limit&offset=$prevOffset' : null,
       'results': results,
     };

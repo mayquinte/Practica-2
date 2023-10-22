@@ -7,10 +7,13 @@ environment:
   sdk: ">=2.19.2 <4.0.0"
 
 dependencies:
-  conduit: ^4.3.7
-  conduit_core: ^4.3.6
+  conduit: ^4.4.0
+  conduit_core: ^4.3.8
   postgres: ^2.6.1
   
 dev_dependencies:
   test: ^1.21.6
   conduit_test: ^4.3.6
+
+dependency_overrides:
+  watcher: ^1.1.0
