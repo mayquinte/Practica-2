@@ -1,5 +1,5 @@
 username: "postgres"
 password: "Puchy5531"
-host: "localhost"
+host: "postgres-db"
 port: 5432
 databaseName: "DirectoryAPP"

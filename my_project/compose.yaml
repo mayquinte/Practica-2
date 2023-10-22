@@ -25,13 +25,13 @@ services:
     ports:
       - 8888:8000
     environment:
-       DATABASE_URL: postgres://postgres:Puchy5531@localhost:5432/DirectoryAPP
+       DATABASE_URL: postgres://postgres:Puchy5531@postgres-db:5432/DirectoryAPP
     networks:
       - my_project_net
     depends_on:
       postgres-db:
-        condition: service_healthy
-        restart: true
+          condition: service_healthy
+          restart: true
 
 volumes:
   postgres_data:

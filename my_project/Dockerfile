@@ -13,8 +13,11 @@ RUN dart pub get
 
 RUN apt-get install -y postgresql-client
 
+# Instalar PostgreSQL
+RUN apt-get install -y postgresql
+
 # Establecer las variables de entorno para la conexión a la base de datos
-ENV DB_HOST=localhost
+ENV DB_HOST=postgres-db
 ENV DB_PORT=5432
 ENV DB_NAME=DirectoryAPP
 ENV DB_USER=postgres
@@ -23,7 +26,6 @@ ENV DB_PASSWORD=Puchy5531
 RUN dart run conduit db generate 
 
 # Esperar a que la base de datos esté disponible antes de ejecutar las migraciones
-CMD bash -c 'while !</dev/tcp/$DB_HOST/$DB_PORT; do sleep 1; done; dart run conduit db upgrade && dart run ./my_project/bin/main.dart'
-
+CMD bash -c 'while !</dev/tcp/$DB_HOST/$DB_PORT; do sleep 1; done; dart run conduit db upgrade && conduit serve'
 # Expose port 8000 to the outside world
 EXPOSE 8000
