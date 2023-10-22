@@ -13,12 +13,6 @@ services:
       - 5432:5432
     volumes:
       - postgres_data:/var/lib/postgresql/data
-    command: >
-      bash -c "
-      dockerize -wait tcp://localhost:5432 -timeout 30s &&
-      psql -U postgres -d DirectoryAPP -c 'CREATE EXTENSION IF NOT EXISTS \"uuid-ossp\";' &&
-      dart run conduit db upgrade
-      "
     networks:
       - my_project_net
     healthcheck:
