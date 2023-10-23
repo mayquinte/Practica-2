@@ -18,7 +18,6 @@ RUN apt-get install -y postgresql
 
 RUN dart run conduit db generate 
 
-# Esperar a que la base de datos esté disponible antes de ejecutar las migraciones
+# Ejecutar las migraciones
 CMD bash -c 'dart run conduit db upgrade && conduit serve'
-# Expose port 8888 to the outside world
 EXPOSE 8888
