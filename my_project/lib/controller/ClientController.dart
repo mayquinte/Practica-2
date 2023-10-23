@@ -2,55 +2,57 @@ import 'package:my_project/model/tables.dart';
 import 'package:my_project/my_project.dart';
 
 class ClientController extends ResourceController {
-  //  gestiona los queries de los clientes
+  //Gestiona los queries de los clientes
   ClientController(this.context);
 
   final ManagedContext context;
 
-@Operation.get()
-Future<Response> getAllUsuarios(
-    {@Bind.query('limit') int limit = 5,
-    @Bind.query('offset') int offset = 0}) async {
-  try {
-    final clientQuery = Query<Client>(context)
-      ..fetchLimit = limit
-      ..offset = offset;
-    final client = await clientQuery.fetch();
-    bool clientEmpty = false;
-    if (client.isEmpty){
-      clientEmpty = true;
-      return Response.notFound(body: {"message": "Clients Not Found"});
-    } 
-    final count = client.length;
-    final nextOffset = offset + limit;
-    int prevOffset = 0;
-    if(offset > 0)
-      prevOffset = offset - limit;
+// Muestra todos los clientes registrados de 5 en 5
+  @Operation.get()
+  Future<Response> getAllUsuarios(
+      {@Bind.query('limit') int limit = 5,
+      @Bind.query('offset') int offset = 0}) async {
+    try {
+      final clientQuery = Query<Client>(context)
+        ..fetchLimit = limit
+        ..offset = offset;
+      final client = await clientQuery.fetch();
+      bool clientEmpty = false;
+      if (client.isEmpty){
+        clientEmpty = true;
+        return Response.notFound(body: {"message": "Clients Not Found"});
+      } 
+      final count = client.length;
+      final nextOffset = offset + limit;
+      int prevOffset = 0;
+      if(offset > 0)
+        prevOffset = offset - limit;
 
-    final results = [];
-    for (final c in client) {
-      results.add({
-        'id': c.id,
-        'name': c.name,
-        'emails': c.email,
-      });
-    }
+      final results = [];
+      for (final c in client) {
+        results.add({
+          'id': c.id,
+          'name': c.name,
+          'email': c.email,
+        });
+      }
 
-    final Map<String, dynamic> responseMap = {
-      'count': count,
-      'next': clientEmpty == false ? '/directories?limit=$limit&offset=$nextOffset' : null,
-      'previous': prevOffset >= 0 ? '/directories?limit=$limit&offset=$prevOffset' : null,
-      'results': results,
-    };
+      final Map<String, dynamic> responseMap = {
+        'count': count,
+        'next': clientEmpty == false ? '/directories?limit=$limit&offset=$nextOffset' : null,
+        'previous': prevOffset >= 0 ? '/directories?limit=$limit&offset=$prevOffset' : null,
+        'results': results,
+      };
 
-    return Response.ok(responseMap);
+      return Response.ok(responseMap);
  
-  } catch (e) {
-    return Response.serverError(body: {"error": e.toString()});
+    } catch (e) {
+      return Response.serverError(body: {"error": e.toString()});
+    }
   }
-}
 
-  @Operation.post() //crea un cliente en la BD
+// Crea un nuevo cliente en la BD
+  @Operation.post()
   Future<Response> createClient(@Bind.body() Client body) async {
     try {
       final query = Query<Client>(context)..values = body;
@@ -61,8 +63,8 @@ Future<Response> getAllUsuarios(
     }
   }
 
-
-  @Operation.get('c_id') //Muestra un cliente en especifico
+ //Muestra un cliente en especifico dado su id
+  @Operation.get('c_id')
   Future<Response> getUserAtIndex(@Bind.path("c_id") int index) async {
     try {
       final clientQuery = Query<Client>(context)
@@ -76,7 +78,8 @@ Future<Response> getAllUsuarios(
     }
   }
 
-  @Operation.put('c_id') //actualiza un cliente de la BD por un id
+//Actualiza un cliente de la BD por su id
+  @Operation.put('c_id') 
   Future<Response> updateClient(
       @Bind.path("c_id") int index, @Bind.body() Client body) async {
     try {
@@ -93,7 +96,8 @@ Future<Response> getAllUsuarios(
     }
   }
 
-  @Operation.delete('c_id') //borra un cliente de la BD por id
+//Borra un cliente de la BD por su id
+  @Operation.delete('c_id') 
   Future<Response> deleteUsuario(@Bind.path("c_id") int index) async {
     try {
       final query = Query<Client>(context)..where((u) => u.id).equalTo(index);
