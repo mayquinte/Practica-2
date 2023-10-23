@@ -19,12 +19,12 @@ $ cd Practica-2
 ```
 
 ## Endpoints del servicio web
-GET http://{Direccion}:8888/status -> Responde simplemente pong
-GET http://{Direccion}:8888/directories -> Lista todos los objetos
-POST http://{Direccion}:8888/directories -> Crea un objeto
-GET http://{Direccion}:8888/directories/{id} -> Muestra un objeto
-PUT http://{Direccion}:8888/directories/{id} -> Actualiza un objeto
-DELETE http://{Direccion}:8888/directories/{id} -> Eliminar un objeto
+- GET http://{Direccion}:8888/status -> Responde simplemente pong
+- GET http://{Direccion}:8888/directories -> Lista todos los objetos
+- POST http://{Direccion}:8888/directories -> Crea un objeto
+- GET http://{Direccion}:8888/directories/{id} -> Muestra un objeto
+- PUT http://{Direccion}:8888/directories/{id} -> Actualiza un objeto
+- DELETE http://{Direccion}:8888/directories/{id} -> Eliminar un objeto
 
 ## Esquema de un objeto
 ```bash
