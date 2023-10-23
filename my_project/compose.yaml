@@ -7,7 +7,7 @@ services:
     restart: always
     environment:
       POSTGRES_DB: DirectoryAPP
-      POSTGRES_USER: postgres
+      POSTGRES_USER: userpg
       POSTGRES_PASSWORD: Puchy5531
     ports:
       - 5432:5432
@@ -23,7 +23,7 @@ services:
     build: .
     restart: always
     ports:
-      - 8888:8000
+      - 8888:8888
     environment:
        DATABASE_URL: postgres://postgres:Puchy5531@postgres-db:5432/DirectoryAPP
     networks:

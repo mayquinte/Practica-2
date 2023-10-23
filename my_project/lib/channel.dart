@@ -15,7 +15,7 @@ class MyProjectChannel extends ApplicationChannel {
 
         ///Crea un objeto "context" que contiene la conexion a la base de datos y el modelo de datos
         //Datos para el ingreso al servidor de la base de datos
-        "postgres",
+        "userpg",
         "Puchy5531",
         "postgres-db",
         5432,
