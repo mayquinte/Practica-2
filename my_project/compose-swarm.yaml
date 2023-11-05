@@ -12,7 +12,8 @@ services:
     ports:
       - 5432:5432
     volumes:
-      - postgres_data:/var/lib/postgresql/data
+      - type: bind
+        source: "/data/gv0/vols/practica-2"
     networks:
       - my_project_net
     healthcheck:
@@ -20,7 +21,7 @@ services:
       start_period: 30s
 
   my_project:
-    build: .
+    image: jcliu08/practica-2
     restart: always
     ports:
       - 8888:8888
