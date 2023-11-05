@@ -20,5 +20,4 @@ RUN dart run conduit db generate
 
 # Ejecutar las migraciones
 CMD bash -c 'dart run conduit db upgrade && conduit serve'
-
 EXPOSE 8888
