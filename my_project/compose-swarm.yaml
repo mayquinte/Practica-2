@@ -1,0 +1,42 @@
+version: '3.9'
+
+services:
+
+  postgres-db:
+    image: 'postgres:15.0-alpine'
+    restart: always
+    environment:
+      POSTGRES_DB: DirectoryAPP
+      POSTGRES_USER: userpg
+      POSTGRES_PASSWORD: Puchy5531
+    ports:
+      - 5432:5432
+    volumes:
+      - type: bind
+        source: "/data/gv0/vols/practica-2"
+        target: "/var/lib/postgresql/data"
+    networks:
+      - my_project_net
+    healthcheck:
+      test: ["CMD", "pg_isready"]
+      start_period: 30s
+
+  my_project:
+    image: mayquinte/practica-2
+    restart: always
+    ports:
+      - 8888:8888
+    environment:
+       DATABASE_URL: postgres://userpg:Puchy5531@postgres-db:5432/DirectoryAPP
+    networks:
+      - my_project_net
+    depends_on:
+      postgres-db:
+          condition: service_healthy
+          restart: true
+
+volumes:
+  postgres_data:
+  
+networks:
+  my_project_net:
