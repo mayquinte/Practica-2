@@ -14,6 +14,7 @@ services:
     volumes:
       - type: bind
         source: "/data/gv0/vols/practica-2"
+        target: "/var/lib/postgresql/data"
     networks:
       - my_project_net
     healthcheck:
