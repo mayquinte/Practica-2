@@ -1,7 +1,7 @@
 kind: Template
 apiVersion: v1
 metadata:
-  name: jcliu08/practica_2
+  name: jcliu08/practica-2
   annotations:
     description: >-
       Platilla de despliegue para practica-2
@@ -197,7 +197,7 @@ objects:
             failurePolicy: Abort
             execNewPod:
               containerName: appserver
-              command: ["/bin/bash", "-c", "./start.sh"]
+              command: ["/bin/bash", "-c", "dart run conduit db upgrade && conduit serve"]
               env:
                 - name: POSTGRESQL_DATABASES_DEFAULT_NAME
                   valueFrom:
@@ -212,12 +212,11 @@ objects:
             name: "${APP_NAME}-appserver"
         spec:
           containers:
-            - image: 'jcliu08/practica_2'
+            - image: 'jcliu08/practica-2'
               imagePullPolicy: Always
               name: appserver
               args:
                 - appserver
-              command: ["/bin/bash", "-c", "./start.sh"]
               env:
                 - name: POSTGRESQL_DATABASES_DEFAULT_NAME
                   valueFrom:
