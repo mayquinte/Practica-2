@@ -12,7 +12,7 @@ COPY . /my_project
 WORKDIR /my_project
 
 # Obtiene las dependencias de tu aplicación
-COPY pubspec.* /my_project/
+COPY /Practica-2/my_project/pubspec.yaml /my_project/
 RUN dart pub global activate conduit
 RUN dart pub get
 
