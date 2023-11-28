@@ -16,13 +16,13 @@ COPY . .
 
 # Ensure packages are still up-to-date if anything has changed
 RUN dart pub get --offline
-RUN dart compile exe bin/server.dart -o bin/server
+RUN dart compile exe bin/main.dart -o bin/main
 
 # Build minimal serving image from AOT-compiled `/server` and required system
 # libraries and configuration files stored in `/runtime/` from the build stage.
 FROM scratch
 COPY --from=build /runtime/ /
-COPY --from=build /app/bin/server /app/bin/
+COPY --from=build /app/bin/main /app/bin/
 
 RUN apt-get install -y postgresql-client
 
@@ -32,6 +32,6 @@ RUN apt-get install -y postgresql
 RUN dart run conduit db generate 
 
 EXPOSE 8888
-CMD ["/app/bin/server"]
+CMD ["/app/bin/main"]
 # Ejecutar las migraciones
 CMD bash -c 'dart run conduit db upgrade && conduit serve'
