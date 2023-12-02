@@ -1,4 +1,5 @@
 FROM dart:stable AS build
+USER root
 
 RUN apt-get update -y \
    && apt-get install -y build-essential libpq-dev git 
