@@ -22,7 +22,7 @@ RUN dart compile exe bin/main.dart -o bin/main
 # libraries and configuration files stored in `/runtime/` from the build stage.
 FROM scratch
 COPY --from=build /runtime/ /
-COPY --from=build /app/bin/main /app/bin/
+COPY --from=build /my_project/bin/main.dart /my_project/bin/
 
 RUN apt-get install -y postgresql-client
 
