@@ -8,7 +8,6 @@ COPY . /my_project
 
 WORKDIR /my_project
 
-COPY pubspec.* /my_project/
 RUN dart pub global activate conduit
 RUN dart pub get
 
