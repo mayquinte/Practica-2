@@ -11,9 +11,6 @@ COPY pubspec.* /my_project/
 RUN dart pub global activate conduit
 RUN dart pub get
 
-# Copy app source code and AOT compile it.
-COPY . .
-
 # Ensure packages are still up-to-date if anything has changed
 RUN dart pub get --offline
 RUN dart compile exe bin/main.dart -o bin/main
