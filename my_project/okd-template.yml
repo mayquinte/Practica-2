@@ -204,7 +204,21 @@ objects:
                     secretKeyRef:
                       name: "${APP_NAME}-keys"
                       key: DATABASE_URL
-
+                - name: DB_USERNAME
+                  valueFrom:
+                    secretKeyRef:
+                      name: "${APP_NAME}-keys"
+                      key: DB_USR
+                - name: DB_PASSWORD
+                  valueFrom:
+                    secretKeyRef:
+                      name: "${APP_NAME}-keys"
+                      key: DB_PWD
+                - name: DB_NAME
+                  valueFrom:
+                    secretKeyRef:
+                      name: "${APP_NAME}-keys"
+                      key: DB_NAME
       template:
         metadata:
           labels:
