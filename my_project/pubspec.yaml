@@ -9,6 +9,7 @@ environment:
 dependencies:
   conduit: ^4.4.0
   conduit_core: ^4.3.8
+  dotenv: ^4.2.0
   postgres: ^2.6.1
   
 dev_dependencies:
