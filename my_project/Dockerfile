@@ -9,7 +9,7 @@ COPY . /my_project
 WORKDIR /my_project
 
 # Establece la variable de entorno PUB_CACHE
-ENV PUB_CACHE=/path/to/your/pub/cache
+ENV PUB_CACHE=/Practica-2/my_project
 
 RUN dart pub global activate conduit
 RUN dart pub get
