@@ -8,9 +8,11 @@ COPY . /my_project
 
 WORKDIR /my_project
 
+# Establece la variable de entorno PUB_CACHE
+ENV PUB_CACHE=/path/to/your/pub/cache
+
 RUN dart pub global activate conduit
 RUN dart pub get
-
 
 RUN apt-get install -y postgresql-client
 
