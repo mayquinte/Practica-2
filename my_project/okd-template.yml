@@ -1,7 +1,7 @@
 kind: Template
 apiVersion: v1
 metadata:
-  name: jcliu08/practica-2
+  name: jcliu08/practica_2
   annotations:
     description: >-
       Platilla de despliegue para practica-2
@@ -212,7 +212,7 @@ objects:
             name: "${APP_NAME}-appserver"
         spec:
           containers:
-            - image: 'jcliu08/practica-2'
+            - image: 'jcliu08/practica_2'
               imagePullPolicy: Always
               name: appserver
               args:
