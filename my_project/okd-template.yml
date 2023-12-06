@@ -208,17 +208,17 @@ objects:
                   valueFrom:
                     secretKeyRef:
                       name: "${APP_NAME}-keys"
-                      key: DB_USR
+                      key: db_usr
                 - name: DB_PASSWORD
                   valueFrom:
                     secretKeyRef:
                       name: "${APP_NAME}-keys"
-                      key: DB_PWD
+                      key: db_pwd
                 - name: DB_NAME
                   valueFrom:
                     secretKeyRef:
                       name: "${APP_NAME}-keys"
-                      key: DB_NAME
+                      key: db_name
       template:
         metadata:
           labels:
