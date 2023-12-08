@@ -1,8 +1,6 @@
 FROM dart:stable AS build
 USER root
 
-RUN chgrp -R 0 /my_project && \
-    chmod -R g=u /my_project
 
 RUN apt-get update -y \
    && apt-get install -y build-essential libpq-dev git 
@@ -16,6 +14,9 @@ ENV PUB_CACHE=/Practica-2/my_project
 
 RUN dart pub get
 RUN dart pub global activate conduit
+
+RUN chgrp -R 0 /my_project/.dart_tool/pub && \
+    chmod -R g=u /my_project/.dart_tool/pub
  
 RUN apt-get install -y postgresql-client
 
