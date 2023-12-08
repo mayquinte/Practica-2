@@ -246,4 +246,6 @@ objects:
                 requests:
                   memory: "256M"
           restartPolicy: Always
+          securityContext:
+            runAsNonRoot: true
       test: false
