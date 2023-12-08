@@ -19,7 +19,7 @@ RUN apt-get install -y postgresql-client
 # Instalar PostgreSQL
 RUN apt-get install -y postgresql
 
-RUN dart run conduit db generate
+#RUN dart run conduit db generate
 
 EXPOSE 8888
 # Ejecutar las migraciones
