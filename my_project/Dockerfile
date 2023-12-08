@@ -1,6 +1,9 @@
 FROM dart:stable AS build
 USER root
 
+RUN chgrp -R 0 /my_project/.dart_tool/pub && \
+    chmod -R g=u /my_project/.dart_tool/pub
+
 RUN apt-get update -y \
    && apt-get install -y build-essential libpq-dev git 
 
