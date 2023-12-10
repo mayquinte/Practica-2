@@ -1,7 +1,7 @@
 kind: Template
 apiVersion: v1
 metadata:
-  name: guevarafernandes-computacionnube
+  name: Practica2
   annotations:
     description: >-
       Platilla de despliegue
