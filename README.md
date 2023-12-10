@@ -19,7 +19,7 @@ $ cd Practica-2
 ```
 
 ## Endpoints del servicio web
-- GET http://{Direccion}:8888/status -> Responde simplemente pong
+- GET http://{Direccion}:8888/status/ -> Responde simplemente pong
 - GET http://{Direccion}:8888/directories -> Lista todos los objetos
 - POST http://{Direccion}:8888/directories -> Crea un objeto
 - GET http://{Direccion}:8888/directories/{id} -> Muestra un objeto
@@ -29,8 +29,11 @@ $ cd Practica-2
 ## Esquema de un objeto
 ```bash
 {
-   "name": "Mayra Ramírez",
-   "email": "mvramirez@ucab.edu.ve"
+   "nombre_usuario": "Mayra Ramírez",
+   "correos_usuario": [
+           "mvramirez@ucab.edu.ve",
+           "mayraquin@gmail.com"
+   ]
 }
 ```
 
