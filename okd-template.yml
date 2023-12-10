@@ -4,7 +4,7 @@ metadata:
   name: guevarafernandes-computacionnube
   annotations:
     description: >-
-      Platilla de despliegue para guevarafernandes-computacionnube
+      Platilla de despliegue
     tags: "flask,python"
 
 parameters:
@@ -197,7 +197,7 @@ objects:
             name: "${APP_NAME}-flask-app"
         spec:
           containers:
-            - image: 'c17fernandes/guevarafernandes-computacionnube'
+            - image: 'jcliu08/practica2'
               imagePullPolicy: Always
               name: flask-app
               env:
