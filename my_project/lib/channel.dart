@@ -1,8 +1,8 @@
-import 'package:my_project/my_project.dart';
 import 'package:conduit_postgresql/conduit_postgresql.dart';
-import '../controller/ClientController.dart';
-import 'dart:io';
 import 'package:dotenv/dotenv.dart';
+import 'package:my_project/my_project.dart';
+
+import '../controller/ClientController.dart';
 
 class MyProjectChannel extends ApplicationChannel {
   late ManagedContext context;
