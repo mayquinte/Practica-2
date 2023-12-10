@@ -176,7 +176,7 @@ objects:
               - postgresql
             from:
               kind: ImageStreamTag
-              name: 'postgresql:12'
+              name: 'postgresql:13'
               namespace: 'openshift'
             lastTriggeredImage: ''
           type: ImageChange
