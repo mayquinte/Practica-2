@@ -14,11 +14,11 @@ parameters:
   
   - name: DB_NAME
     description: Nombre de la base de datos.
-    value: mydb
+    value: DirectoryAPP
 
   - name: DB_USR
     description: Nombre de usario para conexión a la base de datos.
-    value: myuser
+    value: userpg
 
   - name: DB_PWD
     description: Password de usuario para conexión a la base de datos.
